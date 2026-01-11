@@ -1,0 +1,12 @@
+.sidebar-open {
+  width: 250px;
+}
+
+.sidebar-closed {
+  width: 60px;
+}
+
+.sidebar-open,
+.sidebar-closed {
+  transition: width 0.3s;
+}
