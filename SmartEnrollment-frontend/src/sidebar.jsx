@@ -1,45 +1,52 @@
-import React, { useState } from "react";
-import { Button, Nav } from "react-bootstrap";
-import './sidebar.css';
+import { useState } from "react";
+import { Nav } from "react-bootstrap";
+import { FaBars, FaChevronLeft } from "react-icons/fa";
+import { LuHouse, LuUser, LuSettings } from "react-icons/lu";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
 
-  const toggleSidebar = () => setIsOpen(!isOpen);
-
   return (
-    <div className="d-flex">
-      {/* */}
-      <div
-        className={`bg-dark text-white p-3 ${isOpen ? "sidebar-open" : "sidebar-closed"}`}
-        style={{
-          width: isOpen ? "250px" : "60px",
-          minHeight: "100vh",
-          transition: "width 0.3s",
-        }}
-      >
-        <h4 className="text-center">{isOpen ? "Menú" : "M"}</h4>
-        <Nav className="flex-column mt-4">
-          <Nav.Link href="#" className="text-white">Inicio</Nav.Link>
-          <Nav.Link href="#" className="text-white">Usuarios</Nav.Link>
-          <Nav.Link href="#" className="text-white">Config</Nav.Link>
-        </Nav>
+    <aside
+      className="d-flex flex-column border-end"
+      style={{
+        width: isOpen ? "250px" : "60px",
+        transition: "width 0.5s",
+        minHeight: "100vh",
+        backgroundColor: "#f8f9fa", 
+        color: "#212529", 
+      }}
+    >
+      {/* Header */}
+      <div className="d-flex align-items-center justify-content-between p-3 border-bottom">
+        {isOpen && <h5 className="m-0 text-dark">Menú</h5>}
 
-        <Button
-          variant="secondary"
-          onClick={toggleSidebar}
-          className="mt-4 w-100"
+        <button
+          className="btn btn-sm btn-outline-secondary border-0"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? "Cerrar" : "Abrir"}
-        </Button>
+          {isOpen ? <FaChevronLeft /> : <FaBars />}
+        </button>
       </div>
 
-      {/*  */}
-      <div className="flex-grow-1 p-3">
-        <h2>Cont</h2>
-        <p>Aquí va el contenido </p>
-      </div>
-    </div>
+      {/* Links */}
+      <Nav className="flex-column gap-1 px-2 mt-2">
+        <Nav.Link className="sidebar-link d-flex align-items-center gap-3 rounded px-3 py-2">
+          <LuHouse size={18} />
+          {isOpen && "Inicio"}
+        </Nav.Link>
+
+        <Nav.Link className="sidebar-link d-flex align-items-center gap-3 rounded px-3 py-2">
+          <LuUser size={18} />
+          {isOpen && "Usuarios"}
+        </Nav.Link>
+
+        <Nav.Link className="sidebar-link d-flex align-items-center gap-3 rounded px-3 py-2">
+          <LuSettings size={18} />
+          {isOpen && "Configuración"}
+        </Nav.Link>
+      </Nav>
+    </aside>
   );
 }
 
