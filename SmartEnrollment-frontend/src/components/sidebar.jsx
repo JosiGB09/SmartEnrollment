@@ -1,7 +1,7 @@
 
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { FaBars, FaChevronLeft } from "react-icons/fa";
+import { FaBars, FaChevronLeft,FaMoon, FaSun } from "react-icons/fa";
 import { LuHouse, LuUser, LuSettings } from "react-icons/lu";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -18,20 +18,35 @@ function Sidebar() {
         width: isOpen ? "240px" : "70px",
         transition: "width 0.3s",
         minHeight: "100vh",
-        background: "#f4f5f7",
-        borderRight: "1px solid #ddd",
+        background: "var(--bg-sidebar)",
+        color: "var(--text-main)",
+        borderRight: "1px solid #ccc",
       }}
     >
+
+
       {/* Header */}
-      <div className="d-flex align-items-center justify-content-between p-3">
+      <div className="d-flex align-items-center justify-content-between p-3 gap-2">
         {isOpen && <strong>Dashboard</strong>}
-        <button
-          className="btn btn-sm btn-light"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <FaChevronLeft /> : <FaBars />}
-        </button>
+
+        <div className="d-flex gap-2">
+          <button
+            className="btn btn-sm btn-light"
+            onClick={toggleTheme}
+            title="Cambiar tema"
+          >
+            {theme === "light" ? <FaMoon /> : <FaSun />}
+          </button>
+
+          <button
+            className="btn btn-sm btn-light"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FaChevronLeft /> : <FaBars />}
+          </button>
+        </div>
       </div>
+
 
       {/* Links */}
       <Nav className="flex-column gap-1 px-2">
@@ -40,7 +55,7 @@ function Sidebar() {
           end
           className={({ isActive }) =>
             `nav-link d-flex align-items-center gap-3 rounded px-3 py-2
-             ${isActive ? "bg-primary text-white" : "text-dark"}`
+            ${isActive ? "active-link" : ""}`
           }
         >
           <LuHouse />
@@ -48,10 +63,11 @@ function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/usuarios"
+          to="/"
+          end
           className={({ isActive }) =>
             `nav-link d-flex align-items-center gap-3 rounded px-3 py-2
-             ${isActive ? "bg-primary text-white" : "text-dark"}`
+            ${isActive ? "active-link" : ""}`
           }
         >
           <LuUser />
@@ -59,10 +75,11 @@ function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/configuracion"
+          to="/"
+          end
           className={({ isActive }) =>
             `nav-link d-flex align-items-center gap-3 rounded px-3 py-2
-             ${isActive ? "bg-primary text-white" : "text-dark"}`
+            ${isActive ? "active-link" : ""}`
           }
         >
           <LuSettings />
