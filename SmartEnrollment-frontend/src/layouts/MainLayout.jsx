@@ -12,9 +12,21 @@ function MainLayout({ children }) {
         setIsOpen={setSidebarOpen}
       />
 
-      <div className="flex-grow-1">
+      <div
+        className="flex-grow-1"
+        style={{
+            background: "var(--bg-main)",
+            color: "var(--text-main)",
+            minHeight: "100vh",
+        }}
+        >
+
         {/* Header mobile */}
-        <header className="d-md-none p-2 border-bottom">
+        <header
+            className="d-md-none p-2"
+            style={{ borderBottom: "1px solid var(--text-main)" }}
+            >
+
           <button
             className="btn btn-outline-secondary"
             onClick={() => setSidebarOpen(true)}
@@ -23,7 +35,16 @@ function MainLayout({ children }) {
           </button>
         </header>
 
-        <main className="p-3">{children}</main>
+        <main
+        className="p-3"
+        style={{
+            background: "var(--bg-main)",
+            color: "var(--text-main)",
+        }}
+        >
+        {children}
+        </main>
+
       </div>
     </div>
   );
