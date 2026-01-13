@@ -63,7 +63,7 @@ function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/"
+          to="/usuarios"
           end
           className={({ isActive }) =>
             `nav-link d-flex align-items-center gap-3 rounded px-3 py-2
@@ -75,7 +75,7 @@ function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/"
+          to="/configuracion"
           end
           className={({ isActive }) =>
             `nav-link d-flex align-items-center gap-3 rounded px-3 py-2
