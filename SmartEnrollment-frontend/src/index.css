@@ -3,14 +3,24 @@ html, body, #root {
   margin: 0;
 }
 .sidebar-link {
-  color: #212529 !important;
+  color: var(--text-main) !important;
   text-decoration: none;
+  transition: background 0.2s;
 }
 
 .sidebar-link:hover {
-  background-color: #e9ecef;
-  color: #000 !important;
+  background: rgba(0, 0, 0, 0.08);
 }
+
+[data-theme="dark"] .sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.active-link {
+  background: var(--bg-active);
+  color: white !important;
+}
+
 
 [data-theme="light"] {
   --bg-main: #f8f9fa;
@@ -32,8 +42,4 @@ body {
   margin: 0;
   background: var(--bg-main);
   color: var(--text-main);
-}
-.active-link {
-  background: var(--bg-active);
-  color: white !important;
 }

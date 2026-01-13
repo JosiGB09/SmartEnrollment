@@ -1,4 +1,4 @@
-import { LuHouse, LuUser, LuSettings, LuBarChart } from "react-icons/lu";
+import { LuHouse, LuUser, LuSettings, LuBarcode  } from "react-icons/lu";
 
 import Home from "../views/home";
 import User from "../views/users";
@@ -30,7 +30,7 @@ export const appRoutes = [
     path: "/reportes",
     element: <Reports />,
     label: "Reportes",
-    icon: LuBarChart,
+    icon: LuBarcode,
     showInMenu: true, 
   },
 ];

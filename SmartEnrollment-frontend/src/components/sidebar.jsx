@@ -4,12 +4,11 @@ import { NavLink } from "react-router-dom";
 import { FaBars, FaChevronLeft,FaMoon, FaSun } from "react-icons/fa";
 import { useState, useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-
+import { appRoutes } from "../routes/appRoutes";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const { theme, toggleTheme } = useContext(ThemeContext);
-
 
   return (
     <aside
@@ -56,17 +55,17 @@ function Sidebar() {
 
             return (
               <NavLink
-                key={route.path}
                 to={route.path}
-                end={route.path === "/"}
+                key={route.path}
                 className={({ isActive }) =>
-                  `nav-link sidebar-link d-flex align-items-center gap-3 rounded px-3 py-2
+                  `sidebar-link d-flex align-items-center gap-3 rounded px-3 py-2
                   ${isActive ? "active-link" : ""}`
                 }
               >
-                <Icon />
+                <route.icon size={18} />
                 {isOpen && route.label}
               </NavLink>
+
             );
           })}
       </Nav>
