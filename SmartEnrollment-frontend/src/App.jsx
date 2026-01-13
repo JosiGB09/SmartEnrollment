@@ -1,13 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Sidebar from './sidebar'
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return <Sidebar />;
+function Home() {
+  return <h2>Inicio</h2>;
 }
 
-export default App
+function Users() {
+  return <h2>Usuarios</h2>;
+}
+
+function Settings() {
+  return <h2>Configuración</h2>;
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/usuarios" element={<Users />} />
+        <Route path="/configuracion" element={<Settings />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
