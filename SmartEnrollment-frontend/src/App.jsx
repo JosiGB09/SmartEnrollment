@@ -1,25 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
+import { appRoutes } from "./routes/appRoutes";
 
-function Home() {
-  return <h2>Inicio</h2>;
-}
-
-function Users() {
-  return <h2>Usuarios</h2>;
-}
-
-function Settings() {
-  return <h2>Configuración</h2>;
-}
 
 function App() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/usuarios" element={<Users />} />
-        <Route path="/configuracion" element={<Settings />} />
+        {appRoutes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
       </Route>
     </Routes>
   );
