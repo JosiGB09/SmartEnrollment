@@ -1,23 +1,33 @@
-import Sidebar from "../components/Sidebar";
-import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import Sidebar from "../components/sidebar";
+import { FaBars } from "react-icons/fa";
 
-function MainLayout() {
+function MainLayout({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="d-flex">
-      <Sidebar />
-      
-      <main
-        className="flex-grow-1 p-4"
-        style={{
-            background: "var(--bg-main)",
-            color: "var(--text-main)",
-        }}
-        >
+      <Sidebar
+        isOpen={sidebarOpen}
+        setIsOpen={setSidebarOpen}
+      />
 
-        <Outlet />
-      </main>
+      <div className="flex-grow-1">
+        {/* Header mobile */}
+        <header className="d-md-none p-2 border-bottom">
+          <button
+            className="btn btn-outline-secondary"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <FaBars />
+          </button>
+        </header>
+
+        <main className="p-3">{children}</main>
+      </div>
     </div>
   );
 }
 
 export default MainLayout;
+
