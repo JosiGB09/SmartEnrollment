@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Sidebar from "../components/sidebar";
 import { FaBars } from "react-icons/fa";
-
+import { Outlet } from "react-router-dom";
 function MainLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -42,7 +42,7 @@ function MainLayout({ children }) {
             color: "var(--text-main)",
         }}
         >
-        {children}
+        <Outlet />
         </main>
 
       </div>
