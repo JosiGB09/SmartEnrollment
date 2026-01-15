@@ -12,7 +12,7 @@ function Home() {
       className="d-flex flex-column justify-content-center align-items-center text-center"
       style={{ minHeight: "80vh" }}
     >
-      <h1 className="fw-bold mb-3">Start Enrollment</h1>
+      <h1 className="fw-bold mb-3">Smart Enrollment</h1>
 
       <p className="fs-5 text-muted mb-4">
         El sitio web para matricular de forma rápida y sencilla
